@@ -1,0 +1,19 @@
+<main>
+  <h1 class="title">Hello from Tab: {{app.node.node_id}}!</h1>
+  <input ng-model="app.newMessage" />
+  <button ng-click="app.send()">send</button>
+  <button ng-click="app.ping()">ping</button>
+  <button ng-click="app.newTab()">new tab</button>
+  <button ng-click="app.getWallpaper()">wallpaper</button>
+  <div style="text-align: left">
+    <p ng-if="app.node.node_id === app.node.master_id" style="color: red">Master Node</p>
+    <p ng-if="app.node.node_id !== app.node.master_id" style="color: yellow">Slave Node</p>
+    <p>Node ID: <b>{{app.node.node_id}}</b></p>
+    <p>Master ID: <b>{{app.node.master_id}}</b></p>
+    <pre>{{app.messages | json}}</pre>
+  </div>
+</main>
+<footer ng-if="app.wallpaper !== null">
+  <img ng-src="{{app.wallpaper.url}}" width="500"/>
+  <p>Score: <b>{{app.wallpaper.score}}</b> - Author: <b>{{app.wallpaper.author}}</b> - URL: <b>{{app.wallpaper.url}}</b></p>
+</footer>
